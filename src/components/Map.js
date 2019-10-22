@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import _ from 'lodash';
 
 import 'ol/ol.css';
@@ -21,24 +22,33 @@ class MapView extends React.Component {
     super(props);
     this.map = null;
     this.popup = null;
+
+    this.state = {
+      showPopup: false,
+    }
   }
   componentDidMount = () => {
     this.map = apply('cmp-map', 'https://api.mapbox.com/styles/v1/rcscastillo/ck1zv7h6e19vw1cqo8g684i9p?access_token=' + key);
 
+    this.map.getView().fit(QUEENS_EXTENT);
+
+    
     this.popup = new Overlay({
       element: document.getElementById('cmp-popup'),
       autoPan: true, 
-    })
-
+    });
     this.map.addOverlay(this.popup);
   }
 
   componentDidUpdate = (prevProps) => {
-    if(prevProps.coordinates === null && this.props.coordinates !== null) {
-      this.focusMap();
-    } else if(prevProps.coordinates !== null && this.props.coordinates === null) {
-      this.popup.setPosition(null);
-    } else if(!_.isEqual(prevProps.coordinates, this.props.coordinates)) {
+    console.log(
+      this.props.coordinates, prevProps.coordinates
+      , ' --- ', !_.isEqual(prevProps.coordinates, this.props.coordinates)
+      , ' --- ', this.props.coordinates !== null);
+    if(
+      !_.isEqual(prevProps.coordinates, this.props.coordinates)
+      && this.props.coordinates !== null
+    ) {
       this.focusMap();
     } 
   }
@@ -47,46 +57,62 @@ class MapView extends React.Component {
     const { lat, lng } = _.get(this.props, 'coordinates');
 
     const coords = transform([lng, lat], 'EPSG:4326', 'EPSG:3857');
-    this.map.getView().setZoom(15);
+    
+    this.map.getView().setZoom(12);
     setTimeout(()=>{
-      this.map.getView().setCenter(coords)
+      this.map.getView().setCenter(coords);  
     }, 200);
 
-    const pixel = this.map.getPixelFromCoordinate(coords);
-    const features = this.map.getFeaturesAtPixel(pixel);
 
-    if (features.length > 0) {
-      this.props.setElectionDistrict(features[0].get('ElectDist'));
-    }
-
+    setTimeout(()=> {
+      const pixel = this.map.getPixelFromCoordinate(coords);
+      const features = this.map.getFeaturesAtPixel(pixel);
+      if (features.length > 0) {
+        this.props.setElectionDistrict(features[0].get('ElectDist'));
+        this.setState({ showPopup: true });
+      }
+    }, 200)
+    
+    
     this.popup.setPosition(coords);
+
+    // setTimeout(()=>{
+    //   content.innerHTML = ReactDOMServer.renderToString(this.buildContent());
+    // }, 300);
   }
 
+  buildContent = () => (
+    <>
+      <h1>Assembly District # {_.get(this.props, 'assemblyDistrict')}</h1>
+      <p>Precinct # {_.get(this.props, 'electionPrecinct')}</p>
+      <p>
+        We don't know who your District Leader is because 
+        the Queens County Democractic Party hasn't updated 
+        their website for more than two years.
+      </p>
+      <p>
+        <a 
+          href={`https://docs.google.com/forms/d/e/1FAIpQLSfHH76kRaTz3BnWNx-dTaQwWVwx1pvsLQZgu-7UiTZi7f7rUQ/viewform?usp=pp_url&entry.381886217=${_.get(this.props, 'assemblyDistrict')}&entry.1258115460=${_.get(this.props, 'electionPrecinct')}`}
+          target='_blank'
+          onClick={()=>{ this.props.setCoordinates(null); }}
+        >Sign up to be District Leader!</a>
+      </p>
+    </>
+  )
   
 
   render = () => (
     <>
       <div id='cmp-map'/>
-      <div id='cmp-popup'>
+      <div id='cmp-popup' style={{ display: this.state.showPopup ? 'block' : 'none' }}>
         <a 
           href="#" 
-          class="cmp-popup-closer"
-          onClick={()=>{ this.props.setCoordinates(null); }}
+          className="cmp-popup-closer"
+          onClick={()=>{ this.setState({ showPopup: false }); }}
         ></a>
-        <h1>Assembly District # {_.get(this.props, 'assemblyDistrict')}</h1>
-        <p>Precinct # {_.get(this.props, 'electionPrecinct')}</p>
-        <p>
-          We don't know who your District Leader is because 
-          the Queens County Democractic Party hasn't updated 
-          their website for more than two years.
-        </p>
-        <p>
-          <a 
-            href={`https://docs.google.com/forms/d/e/1FAIpQLSfHH76kRaTz3BnWNx-dTaQwWVwx1pvsLQZgu-7UiTZi7f7rUQ/viewform?usp=pp_url&entry.381886217=${_.get(this.props, 'assemblyDistrict')}&entry.1258115460=${_.get(this.props, 'electionPrecinct')}`}
-            target='_blank'
-            onClick={()=>{ this.props.setCoordinates(null); }}
-          >Sign up to be District Leader!</a>
-        </p>
+        <div id='cmp-content'>
+          {this.buildContent()}
+        </div>
       </div>
     </>
   )

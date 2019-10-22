@@ -2,13 +2,13 @@
 export const setElectionDistrict = (electionDistrict) => {
 
   return ({
-  type: 'MAP_SET_ELECTION_DISTRICT',
-  data: { 
-    electionDistrict,
-    assemblyDistrict: String(electionDistrict).substring(0, 2),
-    electionPrecinct: String(electionDistrict).substring(2), 
-  }
-})
+    type: 'MAP_SET_ELECTION_DISTRICT',
+    data: { 
+      electionDistrict,
+      assemblyDistrict: String(electionDistrict).substring(0, 2),
+      electionPrecinct: String(electionDistrict).substring(2), 
+    }
+  });
 };
 
 export const setSearchSuggestions = (searchResults) => ({

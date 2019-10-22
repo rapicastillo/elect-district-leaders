@@ -10,6 +10,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch(action.type) {
     case 'MAP_SET_ELECTION_DISTRICT': 
+      console.log("ENTERED HERE ... ", action.data);
       return {
         ...state,
         electionDistrict: action.data.electionDistrict,
