@@ -24,8 +24,19 @@ class DetailsContainer extends React.Component {
   }
 
   handleNewLine = (e) => {
+    if (e.key === 'Enter' && this.props.searchResults.length > 0) {
+      const item = this.props.searchResults[0];
 
+      this.setState({searchQuery: item.formatted_address });
+      this.handleAddressPick(
+        _.get(item, 'geometry.location.lat'), 
+        _.get(item, 'geometry.location.lng'),
+      );
+
+      
+    }
   }
+
   handleSearch = (e) => {
 
     this.setState({

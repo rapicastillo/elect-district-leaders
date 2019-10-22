@@ -38,13 +38,20 @@ class MapView extends React.Component {
       autoPan: true, 
     });
     this.map.addOverlay(this.popup);
+
+    this.map.on('singleclick', (e) => {
+      const features = this.map.getFeaturesAtPixel(e.pixel);
+      if (features.length > 0) {
+        this.props.setElectionDistrict(features[0].get('ElectDist'));
+        this.setState({ showPopup: true });
+        this.popup.setPosition(this.map.getCoordinateFromPixel(e.pixel));
+        
+      }
+    })
+
   }
 
   componentDidUpdate = (prevProps) => {
-    console.log(
-      this.props.coordinates, prevProps.coordinates
-      , ' --- ', !_.isEqual(prevProps.coordinates, this.props.coordinates)
-      , ' --- ', this.props.coordinates !== null);
     if(
       !_.isEqual(prevProps.coordinates, this.props.coordinates)
       && this.props.coordinates !== null
