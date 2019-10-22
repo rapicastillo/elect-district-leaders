@@ -4,10 +4,8 @@ import MapContainer from './MapContainer';
 
 const NewReformers = (props) => (
   <div id='cnt-new-reformers'>
-    <div className='cnt-nf-details'>
-      <DetailsContainer {...props} />
-    </div>
     <div className='cnt-nf-map'>
+      <DetailsContainer {...props} />
       <MapContainer {...props} />
     </div>
   </div>

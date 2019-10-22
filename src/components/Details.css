@@ -1,0 +1,55 @@
+#cmp-details {
+  position: absolute;  
+  padding: 10px;
+  z-index: 2000;
+  background-color: white;
+  width: 240px;
+}
+
+#cmp-details h5 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+#cmp-details #cmp-search-area {
+  border: 1px solid gray;
+}
+#cmp-details #cmp-search-area input[type=text] {
+  width: calc(100% - 10px);
+  padding: 5px;
+  border: none;
+}
+
+#cmp-details
+#cmp-search-area
+.cmp-searchResults {
+  position: absolute;
+}
+
+#cmp-details
+#cmp-search-area
+.cmp-searchResults ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  width: 240px;
+}
+
+#cmp-details
+#cmp-search-area
+.cmp-searchResults ul li button {
+  text-align: left;
+  line-height: 1.5;
+  font-size: 12px;
+  background-color: white;
+  border-image: none;
+  cursor: pointer;
+}
+
+#cmp-details
+#cmp-search-area
+.cmp-searchResults ul li button:hover {
+  background-color: lightgray;
+}

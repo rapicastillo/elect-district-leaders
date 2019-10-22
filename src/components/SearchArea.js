@@ -8,6 +8,7 @@ const SearchArea = (props) => (
       onChange={props.handleSearch} 
       onKeyDown={props.handleNewLine} 
       value={props.searchQuery}
+      placeholder="Input your address to see your district"
     />
 
     <SearchResults {...props} />

@@ -2,7 +2,6 @@ import React from 'react';
 import _ from 'lodash';
 const SearchResults = (props) => (
   <div className='cmp-searchResults'>
-    { console.log(_.get(props, 'searchResults', [])) }
     <ul>
       {
         _.get(props, 'searchResults', []).map(item => (

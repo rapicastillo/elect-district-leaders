@@ -28,7 +28,6 @@ class DetailsContainer extends React.Component {
   }
   handleSearch = (e) => {
 
-    console.log(e.target.value)
     this.setState({
       searchQuery: e.target.value
     }, () => {
@@ -57,7 +56,9 @@ class DetailsContainer extends React.Component {
   }
 
   handleAddressPick = (lat, lng) => {
+    // this.props.setCoordinates(null);
     this.props.setCoordinates({lat, lng});
+    this.props.setSearchSuggestions([]);
   }
 
   render = () => (
