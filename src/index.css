@@ -16,6 +16,15 @@ code {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
+}
+#cnt-new-reformers header {
+  height: 90px;
+  display: flex;
+}
+#cnt-new-reformers header img {
+  height: 100%;
+  width: auto;
 }
 
 #cnt-new-reformers .cnt-nf-details {
@@ -26,4 +35,5 @@ code {
 #cnt-new-reformers .cnt-nf-map {
   flex-grow: 1;
   background-color: blue;
+  position: relative;
 }
