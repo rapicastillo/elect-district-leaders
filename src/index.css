@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#cnt-new-reformers {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+#cnt-new-reformers .cnt-nf-details {
+  width: 300px;
+  background-color: red;
+}
+
+#cnt-new-reformers .cnt-nf-map {
+  flex-grow: 1;
+  background-color: blue;
+}

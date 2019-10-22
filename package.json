@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "ol": "^6.0.1",
+    "ol-mapbox-style": "^5.0.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+    "react-redux": "^7.1.1",
+    "react-scripts": "3.2.0",
+    "redux": "^4.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
