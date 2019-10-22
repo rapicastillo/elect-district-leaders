@@ -12,8 +12,9 @@
   border-radius: 10px;
   border: 1px solid #cccccc;
   bottom: 12px;
-  left: -50px;
+  left: auto;
   min-width: 280px;
+  transform: translateX(-50%);
 }
 #cmp-popup:after, #cmp-popup:before {
   top: 100%;
@@ -23,18 +24,19 @@
   width: 0;
   position: absolute;
   pointer-events: none;
+  left: 50%;
 }
 
 #cmp-popup:after {
   border-top-color: white;
   border-width: 10px;
-  left: 48px;
+  left: 50%;
   margin-left: -10px;
 }
 #cmp-popup:before {
   border-top-color: #cccccc;
   border-width: 11px;
-  left: 48px;
+  left: 50%;
   margin-left: -11px;
 }
 .cmp-popup-closer {
@@ -48,13 +50,26 @@
   color: #333333;
 }
 
-#cmp-popup h1 {
+#cmp-popup h4 {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  padding: 4px;
+  display: inline-block;
+
+}
+#cmp-popup h4 span {
+  display: inline-block;
+  background-color: #1b386e;
+  color: white;
+  padding: 4px;
+  border-radius: 4px;
 }
 
 #cmp-popup p {
   margin: 5px 0 10px;
+  padding: 0 5px;
 }
 
 #cmp-popup p a {

@@ -37,3 +37,40 @@ code {
   background-color: blue;
   position: relative;
 }
+
+@media screen and (max-width: 700px) {
+  .cnt-nf-map {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cnt-nf-map #cmp-details {
+    position: relative;
+    padding: 10px;
+    z-index: 2000;
+    background-color: whitesmoke;
+    width: calc(100% - 20px);
+    top: auto;
+    left: auto;
+  }
+
+  .cnt-nf-map #cmp-details
+  #cmp-search-area
+  .cmp-searchResults {
+    width: calc(100% - 20px);
+  }
+
+  .cnt-nf-map #cmp-details
+  #cmp-search-area
+  .cmp-searchResults ul {
+    width: 100%;
+  }
+
+  .cnt-nf-map #cmp-details
+  #cmp-search-area
+  .cmp-searchResults ul
+  li button {
+    width: 100%;
+    padding: 4px;
+  }
+}

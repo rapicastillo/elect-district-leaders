@@ -83,13 +83,9 @@ class MapView extends React.Component {
 
   buildContent = () => (
     <>
-      <h1>Assembly District # {_.get(this.props, 'assemblyDistrict')}</h1>
+      <h4>Your Election District is <span>{_.get(this.props, 'electionDistrict')}</span></h4>
+      <p>Assembly District # {_.get(this.props, 'assemblyDistrict')}</p>
       <p>Precinct # {_.get(this.props, 'electionPrecinct')}</p>
-      <p>
-        We don't know who your District Leader is because 
-        the Queens County Democractic Party hasn't updated 
-        their website for more than two years.
-      </p>
       <p>
         <a 
           href={`https://docs.google.com/forms/d/e/1FAIpQLSfHH76kRaTz3BnWNx-dTaQwWVwx1pvsLQZgu-7UiTZi7f7rUQ/viewform?usp=pp_url&entry.381886217=${_.get(this.props, 'assemblyDistrict')}&entry.1258115460=${_.get(this.props, 'electionPrecinct')}`}
