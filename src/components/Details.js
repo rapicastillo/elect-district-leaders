@@ -1,8 +1,9 @@
 import React from 'react';
+import SearchArea from './SearchArea';
 
 const Details = (props) => (
   <div id='cmp-details'>
-    DETAIL
+    <SearchArea {...props} />
   </div>
 )
 

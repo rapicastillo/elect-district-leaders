@@ -8142,6 +8142,11 @@ react-error-overlay@^6.0.3:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.3.tgz#c378c4b0a21e88b2e159a3e62b2f531fd63bf60d"
   integrity sha512-bOUvMWFQVk5oz8Ded9Xb7WVdEi3QGLC8tH7HmYP0Fdp4Bn3qw0tRFmr5TW6mvahzvmrK4a6bqWGfCevBflP+Xw==
 
+react-geocode@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-geocode/-/react-geocode-0.2.0.tgz#73830655571915c533df4a2c893ef01361e35c95"
+  integrity sha512-H01XfycAkI5J/gV52OfA8JVaQ0Cx354MktjoYzke1JtDboGch6m4SgnY+S9ipUm+H6++4sCzHTxTLf9ANzbCqw==
+
 react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   version "16.10.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.10.2.tgz#984120fd4d16800e9a738208ab1fba422d23b5ab"

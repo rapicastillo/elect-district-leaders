@@ -1,18 +1,22 @@
 import React from 'react';
+import _ from 'lodash';
+
 import Map from '../components/Map';
 import { connect } from 'react-redux';
-import { setElectionDistrict } from '../actions/map';
+import { setElectionDistrict, setCoordinates } from '../actions/map';
 class MapContainer extends React.Component {
 
   render = () => (
-    <Map />
+    <Map {...this.props} />
   )
 }
 
 const mapStateToProps = (state) => ({
+  coordinates: _.get(state, 'map.coordinates')
 });
 
 export default connect(
   mapStateToProps, {
     setElectionDistrict,
+    setCoordinates,
   })(MapContainer);
