@@ -1,3 +1,4 @@
+import electionDistricts from '../assets/data/edad.json';
 
 const initialState = {
   electionDistrict: null,
@@ -5,6 +6,8 @@ const initialState = {
   coordinates: null,
   assemblyDistrict: null,
   electionPrecinct: null,
+  districtMapping: electionDistricts,
+  part: null,
 };
 
 export default (state = initialState, action) => {
@@ -27,6 +30,11 @@ export default (state = initialState, action) => {
       return {
         ...state, 
         coordinates: action.data.coordinates,
+      }
+    case 'MAP_SET_PART':
+      return {
+        ...state, 
+        part: action.data,
       }
     default: 
       return state;

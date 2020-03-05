@@ -20,3 +20,8 @@ export const setCoordinates = (coordinates) => ({
   type: 'MAP_SET_COORDINATES', 
   data: { coordinates }
 });
+
+export const setPart = (part) => ({
+  type: 'MAP_SET_PART',
+  data: part,
+})

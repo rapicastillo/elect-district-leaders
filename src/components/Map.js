@@ -41,13 +41,14 @@ class MapView extends React.Component {
 
     this.map.on('singleclick', (e) => {
       const features = this.map.getFeaturesAtPixel(e.pixel);
+      console.log(features);
       if (features.length > 0) {
-        this.props.setElectionDistrict(features[0].get('ElectDist'));
+        this.props.setElectionDistrict(features[0].get('elect_dist'));
+        this.props.setPart(features[0].get('ADED-inf_1'));
         this.setState({ showPopup: true });
         this.popup.setPosition(this.map.getCoordinateFromPixel(e.pixel));
-        
       }
-    })
+    });
 
   }
 
@@ -93,6 +94,7 @@ class MapView extends React.Component {
       <h4>Your Election District is <span>{_.get(this.props, 'electionDistrict')}</span></h4>
       <p>Assembly District # {_.get(this.props, 'assemblyDistrict')}</p>
       <p>Precinct # {_.get(this.props, 'electionPrecinct')}</p>
+      <p>Part {_.get(this.props, 'part')}</p>
       <p>
         <a 
           href={`https://docs.google.com/forms/d/e/1FAIpQLSfHH76kRaTz3BnWNx-dTaQwWVwx1pvsLQZgu-7UiTZi7f7rUQ/viewform?usp=pp_url&entry.381886217=${_.get(this.props, 'assemblyDistrict')}&entry.1258115460=${_.get(this.props, 'electionPrecinct')}`}
