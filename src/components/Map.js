@@ -75,8 +75,11 @@ class MapView extends React.Component {
     setTimeout(()=> {
       const pixel = this.map.getPixelFromCoordinate(coords);
       const features = this.map.getFeaturesAtPixel(pixel);
+
+      console.log(features);
       if (features.length > 0) {
-        this.props.setElectionDistrict(features[0].get('ElectDist'));
+        this.props.setElectionDistrict(features[1].get('elect_dist'));
+        this.props.setPart(features[1].get('ADED-inf_1'));
         this.setState({ showPopup: true });
       }
     }, 200)
@@ -95,13 +98,6 @@ class MapView extends React.Component {
       <p>Assembly District # {_.get(this.props, 'assemblyDistrict')}</p>
       <p>Precinct # {_.get(this.props, 'electionPrecinct')}</p>
       <p>Part {_.get(this.props, 'part')}</p>
-      <p>
-        <a 
-          href={`https://docs.google.com/forms/d/e/1FAIpQLSfHH76kRaTz3BnWNx-dTaQwWVwx1pvsLQZgu-7UiTZi7f7rUQ/viewform?usp=pp_url&entry.381886217=${_.get(this.props, 'assemblyDistrict')}&entry.1258115460=${_.get(this.props, 'electionPrecinct')}`}
-          target='_blank'
-          onClick={()=>{ this.props.setCoordinates(null); }}
-        >Sign up to be District Leader!</a>
-      </p>
     </>
   )
   
