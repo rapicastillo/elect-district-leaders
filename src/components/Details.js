@@ -5,7 +5,7 @@ import './Details.css';
 
 const Details = (props) => (
   <div id='cmp-details'>
-    <h5>Search</h5>
+    <h5>Search<br/>Blue = Part A<br/>Red = Part B</h5>
     <SearchArea {...props} />
   </div>
 )
