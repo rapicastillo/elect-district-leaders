@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "ol": "^6.0.1",
     "ol-mapbox-style": "^5.0.2",
     "react": "^16.10.2",
